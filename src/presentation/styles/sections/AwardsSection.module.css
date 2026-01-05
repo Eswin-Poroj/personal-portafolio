@@ -1,0 +1,346 @@
+/**
+ * Awards Section Styles
+ * Professional awards, certifications, and speaking engagements display
+ */
+
+.awards {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.awards.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 1rem auto 0;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 9999px;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filterBtn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.filterBtn.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Card */
+.card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.typeIcon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badgeGold {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+}
+
+.badgePurple {
+  background: linear-gradient(135deg, #9333ea, #7c3aed);
+  color: white;
+}
+
+.badgeBlue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.badgeDefault {
+  background: var(--color-primary);
+  color: white;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.cardMeta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardMeta svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.organization {
+  font-weight: 500;
+}
+
+.date,
+.location {
+  opacity: 0.8;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Empty State */
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  padding: 3rem;
+  background: var(--color-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .awards {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .filters {
+    gap: 0.75rem;
+  }
+
+  .filterBtn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .stats {
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .statValue {
+    font-size: 2.5rem;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .card:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .stats {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .awards,
+  .card,
+  .filterBtn {
+    transition: none;
+    animation: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

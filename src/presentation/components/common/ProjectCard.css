@@ -1,0 +1,197 @@
+.project-card {
+  position: relative;
+  background-color: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+  box-shadow: var(--shadow-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.project-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-featured-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: rgba(245, 158, 11, 0.95);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.project-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.project-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+.project-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.project-badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.project-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.tech-badge {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.tech-badge:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.tech-badge-more {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-tertiary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.project-engineered {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+}
+
+.engineered-label {
+  color: var(--color-text-tertiary);
+  margin-right: var(--spacing-xs);
+}
+
+.engineered-value {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.project-cta {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: transform var(--transition-fast);
+}
+
+.project-card:hover .project-cta {
+  transform: translateX(4px);
+}
+
+@media (min-width: 768px) {
+  .project-title {
+    font-size: var(--font-size-2xl);
+  }
+}
