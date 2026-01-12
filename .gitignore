@@ -7,18 +7,78 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+.pnpm/
+jspm_packages/
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
 *.local
 
+# Vite cache
+.vite/
+.cache/
+coverage/
+
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# TypeScript
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Linux system files
+*~
+
+# Test output
+coverage/
+test-results/
+
+# Optional npm cache directory
+.npm/
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Parcel cache
+.cache/
+
+# Storybook build outputs
+storybook-static/
+
+# VSCode settings
+.history/
+
+# Local IDE settings
+*.code-workspace
+
+# Misc
+*.tgz
+*.bak
+*.tmp
