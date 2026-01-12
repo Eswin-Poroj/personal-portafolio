@@ -64,6 +64,7 @@ export function ContactSection() {
     setTimeout(() => setStatus('idle'), 5000);
   };
 
+  // Map icon names to Lucide components
   const socialIcons: Record<string, LucideIcon> = {
     github: Github,
     linkedin: Linkedin,
@@ -185,7 +186,8 @@ export function ContactSection() {
             <h3 className="contact-info-title">O encuéntrame en:</h3>
             <div className="contact-social-links">
               {socialLinks.map((link) => {
-                const IconComponent = socialIcons[link.platform] || Mail;
+                // Use the 'icon' field from mockData, not 'platform'
+                const IconComponent = socialIcons[link.icon] || Mail;
                 return (
                   <a
                     key={link.id}
@@ -202,7 +204,7 @@ export function ContactSection() {
                       {link.platform.charAt(0).toUpperCase() + link.platform.slice(1)}
                     </span>
                     <span className="contact-social-username">
-                      {link.username}
+                      {(link.username ?? '').length >= 15 ? (link.username ?? '').slice(0, 15) + '...' : (link.username ?? '')}
                     </span>
                   </a>
                 );

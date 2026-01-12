@@ -27,7 +27,7 @@ export function Footer() {
     repository.getAll().then(setSocialLinks);
   }, []);
 
-  const getSocialIcon = (platform: string): LucideIcon => {
+  const getSocialIcon = (iconName: string): LucideIcon => {
     const icons: Record<string, LucideIcon> = {
       github: Github,
       linkedin: Linkedin,
@@ -37,7 +37,7 @@ export function Footer() {
       facebook: Facebook,
       whatsapp: MessageCircle,
     };
-    return icons[platform] || Mail;
+    return icons[iconName] || Mail;
   };
 
   return (
@@ -47,7 +47,8 @@ export function Footer() {
           {/* Social Links */}
           <div className="social-links">
             {socialLinks.map((link) => {
-              const IconComponent = getSocialIcon(link.platform);
+              // Use the 'icon' field from mockData, not 'platform'
+              const IconComponent = getSocialIcon(link.icon);
               return (
                 <a
                   key={link.id}
@@ -67,12 +68,12 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="copyright">
-            © {new Date().getFullYear()} Eswin Poroj. Desarrollado con <Heart size={16} strokeWidth={2} style={{ display: 'inline', verticalAlign: 'middle', color: 'var(--color-primary)' }} /> usando React + Vite
+            © {new Date().getFullYear()} Eswin Poroj. Desarrollado con <Heart size={16} strokeWidth={2} style={{ display: 'inline', verticalAlign: 'middle', color: 'var(--color-primary)' }} /> usando Claude Code.
           </p>
 
           {/* Quick Info */}
           <p className="footer-note">
-            Estudiante de Ingeniería en Sistemas | Apasionado por IA y Desarrollo Web
+            Estudiante de Ingeniería en Sistemas | Apasionado por el Desarrollo de Software e IA.
           </p>
         </div>
       </div>
