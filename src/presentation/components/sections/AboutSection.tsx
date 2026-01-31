@@ -4,10 +4,8 @@
  */
 
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { 
-  Code, 
+import {  
   GraduationCap, 
-  Award, 
   BookOpen, 
   Trophy, 
   Smartphone, 
@@ -22,6 +20,9 @@ import {
 } from 'lucide-react';
 import './AboutSection.css';
 
+// Agrega la importación de la imagen (ajusta la ruta a tu imagen)
+import profileImage from '../../../../public/assets/images/profiles/profile.jpg';
+
 export function AboutSection() {
   const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.2 });
 
@@ -31,9 +32,16 @@ export function AboutSection() {
         <div className={`about-content ${isVisible ? 'visible' : ''}`}>
           {/* Profile Image */}
           <div className="about-image-wrapper">
-            <div className="about-image-placeholder">
-              <span className="image-icon"><Code size={64} strokeWidth={1.5} /></span>
-            </div>
+             {/* Imagen de perfil: lazy loading, decoding async y alt accesible */}
+              <img
+              src={profileImage}
+              alt="Foto de perfil de Eswin Poroj"
+              className="about-image"
+              loading="lazy"
+              decoding="async"
+              width={320}
+              height={320}
+            />
             <div className="about-stats">
               <div className="stat-item">
                 <span className="stat-number">3+</span>
