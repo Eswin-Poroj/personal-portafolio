@@ -1,9 +1,11 @@
 .project-detail {
-  padding-top: 96px;
+  padding-top: 120px;
   min-height: 100vh;
 }
 
 .back-link {
+  position: relative;
+  z-index: 10;
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);

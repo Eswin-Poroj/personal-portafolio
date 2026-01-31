@@ -12,12 +12,14 @@ import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
 import './ProjectDetailPage.css';
 
 export default function ProjectDetailPage() {
+  console.log('[ProjectDetailPage] Component rendered');
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('[ProjectDetailPage] Fetching project with id:', id);
     if (!id) return;
 
     const repository = new ProjectRepository();
@@ -28,13 +30,10 @@ export default function ProjectDetailPage() {
   }, [id]);
 
   const handleBackClick = () => {
-    navigate('/', { replace: true });
-    setTimeout(() => {
-      const projectsSection = document.querySelector('#projects');
-      if (projectsSection) {
-        projectsSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+    console.log('[ProjectDetailPage] handleBackClick triggered');
+    console.log('[ProjectDetailPage] Navigating to / with state:', { scrollTo: 'projects' });
+    // Navigate to home with state to indicate scroll target
+    navigate('/', { state: { scrollTo: 'projects' } });
   };
 
   if (loading) return <LoadingSpinner />;
