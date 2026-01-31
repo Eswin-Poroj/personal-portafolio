@@ -52,22 +52,32 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    // Close mobile menu on route change
-    setIsOpen(false);
-  }, [location]);
+  // Close mobile menu when clicking a nav link (handled in handleNavClick)
+  // No need for useEffect - the menu closes via onClick handlers
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    console.log('[Navigation] handleNavClick called');
+    console.log('[Navigation] href:', href);
+    console.log('[Navigation] location.pathname:', location.pathname);
+    
+    // Always close mobile menu when navigating
+    setIsOpen(false);
+    
     if (location.pathname !== '/' && href.startsWith('#')) {
+      console.log('[Navigation] Not on home, letting Link handle navigation');
       return; // Let the Link handle navigation to home
     }
 
     if (href.startsWith('#')) {
       e.preventDefault();
+      console.log('[Navigation] Looking for element:', href);
       const element = document.querySelector(href);
+      console.log('[Navigation] Element found:', element);
       if (element) {
+        console.log('[Navigation] Scrolling to element...');
         element.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false);
+      } else {
+        console.log('[Navigation] Element NOT found!');
       }
     }
   };
@@ -130,37 +140,37 @@ export function Navigation() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-          <ul className="mobile-nav-list">
-            {navItems.map((item) => {
-              const IconComponent = item.icon;
-              return (
-                <li key={item.href}>
-                  <Link
-                    to={location.pathname === '/' ? item.href : `/${item.href}`}
-                    className="mobile-nav-link"
-                    onClick={(e) => handleNavClick(e, item.href)}
-                  >
-                    <span className="mobile-nav-icon">
-                      <IconComponent size={20} strokeWidth={2} />
-                    </span>
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <a href="#contact" className="mobile-nav-link mobile-nav-cta" onClick={() => setIsOpen(false)}>
-                <span className="mobile-nav-icon">
-                  <Mail size={20} strokeWidth={2} />
-                </span>
-                <span>Contacto</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+      {/* Mobile Menu - Outside container for full width */}
+      <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+        <ul className="mobile-nav-list">
+          {navItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <li key={item.href}>
+                <Link
+                  to={location.pathname === '/' ? item.href : `/${item.href}`}
+                  className="mobile-nav-link"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                >
+                  <span className="mobile-nav-icon">
+                    <IconComponent size={20} strokeWidth={2} />
+                  </span>
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+          <li>
+            <a href="#contact" className="mobile-nav-link mobile-nav-cta" onClick={() => setIsOpen(false)}>
+              <span className="mobile-nav-icon">
+                <Mail size={20} strokeWidth={2} />
+              </span>
+              <span>Contacto</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );

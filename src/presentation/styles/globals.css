@@ -248,6 +248,7 @@ button:focus-visible {
   padding-top: var(--spacing-3xl);
   padding-bottom: var(--spacing-3xl);
   position: relative;
+  scroll-margin-top: 100px; /* Compensate for fixed header */
 }
 
 /* Section Divider */

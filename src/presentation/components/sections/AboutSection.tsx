@@ -24,7 +24,7 @@ import './AboutSection.css';
 import profileImage from '../../../../public/assets/images/profiles/profile.jpg';
 
 export function AboutSection() {
-  const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.2 });
+  const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.05 });
 
   return (
     <section id="about" className="section about-section" ref={elementRef}>
